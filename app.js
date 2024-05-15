@@ -1,7 +1,36 @@
 const express = require('express');
 const app = express();
 
-// Heroku dynamically sets a port
+const endpoints = [
+    {
+      name: 'Login',
+      url: '/login',
+      method: 'GET',
+      description: 'Página de inicio de sesión',
+    },
+    {
+      name: 'Register',
+      url: '/register',
+      method: 'GET',
+      description: 'Página de registro',
+    },
+    {
+      name: 'Dashboard',
+      url: '/dashboard',
+      method: 'GET',
+      description: 'Página de dashboard',
+    },
+    
+  ];
+  
+  app.get('/api/endpoints', (req, res) => {
+    res.json(endpoints);
+  });
+  
+  app.listen(3000, () => {
+    console.log('Servidor iniciado en el puerto 3000');
+  });
+  
 const PORT = process.env.PORT || 5000
 
 app.use(express.urlencoded({extended:false}));
@@ -25,6 +54,113 @@ app.use(session({
 
 //invocamos al modulo de conexion
 const connection = require('./database/db');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //estableciendo rutas
 
