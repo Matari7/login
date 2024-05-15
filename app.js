@@ -22,15 +22,32 @@ const endpoints = [
     },
     
   ];
-  
+ 
   app.get('/api/endpoints', (req, res) => {
     res.json(endpoints);
+  });
+  
+  app.get('/endpoints', (req, res) => {
+    const html = `
+      <h1>Lista de endpoints</h1>
+      <ul>
+        ${endpoints.map(endpoint => `
+          <li>
+            <strong>Nombre:</strong> ${endpoint.name}<br>
+            <strong>URL:</strong> ${endpoint.url}<br>
+            <strong>Método:</strong> ${endpoint.method}<br>
+            <strong>Descripción:</strong> ${endpoint.description}<br>
+          </li>
+        `).join('')}
+      </ul>
+    `;
+    res.send(html);
   });
   
   app.listen(3000, () => {
     console.log('Servidor iniciado en el puerto 3000');
   });
-  
+
 const PORT = process.env.PORT || 5000
 
 app.use(express.urlencoded({extended:false}));
